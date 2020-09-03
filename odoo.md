@@ -45,7 +45,7 @@ There are two type of constrains <br>
 * @api.constrains(): python based constrains<br>
     * Example:<br>
         ```python 
-        # Trigger when from_date value change or add
+        # Trigger when from_date value change or add(when save button click)
         @api.constrains('from_date')
             def _check_amount_to(self):
                 print('to_date')
@@ -59,3 +59,31 @@ There are two type of constrains <br>
         ```
 		When from_date value change first trigger _check_amount then _check_amount_to<br>
         When from_date and to_date value change first trigger _check_amount then _check_amount_to<br>
+
+### onchange(when field value change)
+**constrains vs onchange**: constrains trigger when save button click but onchange trigger when field value change.
+* @api.onchange():<br>
+    * Example:<br>
+        ```python 
+        # Trigger when from_date value change or add
+        @api.onchange('from_date')
+            def _check_amount_to(self):
+                print('to_date')
+
+        ```
+### depends(Return a decorator that specifies the field dependencies of a "compute" method (for new-style function fields).)
+* @api.depends():<br>
+    * Example:<br>
+        ```python 
+        pname = fields.Char(compute='_compute_pname')
+        # Trigger when patner_id value change
+	    @api.depends('partner_id.name', 'partner_id.is_company')
+	    def _compute_pname(self):
+		for record in self:
+		    if record.partner_id.is_company:
+			record.pname = (record.partner_id.name or "").upper()
+		    else:
+			record.pname = record.partner_id.name
+
+        ```
+		
