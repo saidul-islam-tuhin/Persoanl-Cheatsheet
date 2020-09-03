@@ -31,11 +31,24 @@ type of api:
 ### constrains(restriction\check validity data before save data)
 There are two type of constrains
 	* _sql_constraints : sql query based. 
-				Syntax:
-				``` _sql_constraints = [
-     ('constrain_name', 'unique(field_name)', 'Error message'),
-     ]```
-				Examaple: ```
+Syntax:
+				``` 
+				_sql_constraints = [('constrain_name', 'unique(field_name)', 'Error message'),]
+				```
+				
+Examaple: ```python
 				_sql_constraints = [
         ('code_company_uniq', 'unique (code,company_id)', 'The code of the account must be unique per company !')
     ]```
+    * @api.constrains(): python based constrains
+    			Example:
+			``` @api.constrains('from_date')
+    			def _check_amount_to(self):
+        			print('to_date')
+			```
+			   ``` 
+			   @api.constrains('from_date','to_date')
+			    def _check_amount(self):
+				print('from_date to_date')```
+			here
+
