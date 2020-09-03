@@ -29,26 +29,33 @@ type of api:
 * @api.model_create_multi
 
 ### constrains(restriction\check validity data before save data)
-There are two type of constrains
-	* _sql_constraints : sql query based. 
-Syntax:
+There are two type of constrains <br>
+* _sql_constraints : sql query based.<br>
+    * Syntex:<br>
 				``` 
 				_sql_constraints = [('constrain_name', 'unique(field_name)', 'Error message'),]
 				```
 				
-Examaple: ```python
-				_sql_constraints = [
+    * Examaple:<br>
+     ```python
+		sql_constraints = [
         ('code_company_uniq', 'unique (code,company_id)', 'The code of the account must be unique per company !')
-    ]```
-    * @api.constrains(): python based constrains
-    			Example:
-			``` @api.constrains('from_date')
-    			def _check_amount_to(self):
-        			print('to_date')
-			```
-			   ``` 
-			   @api.constrains('from_date','to_date')
-			    def _check_amount(self):
-				print('from_date to_date')```
-			here
+        ]
+    ```
+* @api.constrains(): python based constrains<br>
+    * Example:<br>
+        ```python 
+        # Trigger when from_date value change or add
+        @api.constrains('from_date')
+            def _check_amount_to(self):
+                print('to_date')
 
+        # Trigger when from_date value change or add
+        # Trigger when to_date value change or add
+        # Trigger when from_date and to_date value change or add
+        @api.constrains('from_date','to_date')
+            def _check_amount(self):
+                print('from_date to_date')
+        ```
+		When from_date value change first trigger _check_amount then _check_amount_to<br>
+        When from_date and to_date value change first trigger _check_amount then _check_amount_to<br>
