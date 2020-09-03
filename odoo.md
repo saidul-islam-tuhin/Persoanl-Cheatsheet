@@ -1,4 +1,4 @@
-##Odoo install for development
+# Odoo install for development
 
 sudo apt update && sudo apt upgrade
 	
@@ -14,9 +14,28 @@ git clone https://www.github.com/odoo/odoo --depth 1 --branch 13.0 /opt/odoo13/o
 
 WIP
 
-## Odoo deugin in vs code
+# Odoo debugin in vs code
 
 python -m ptvsd --host localhost --port 5678 ./odoo/odoo-bin -d odoo13db --xmlrpc-port=8069 -c ./odoo-extra-addons/odoo-dev.conf  
 
 
-##API
+# API
+type of api:
+* @api.constrains()
+* @api.onchange()
+* @api.depends()
+* @api.returns()
+* @api.model
+* @api.model_create_multi
+
+### constrains(restriction\check validity data before save data)
+There are two type of constrains
+	* _sql_constraints : sql query based. 
+				Syntax:
+				``` _sql_constraints = [
+     ('constrain_name', 'unique(field_name)', 'Error message'),
+     ]```
+				Examaple: ```
+				_sql_constraints = [
+        ('code_company_uniq', 'unique (code,company_id)', 'The code of the account must be unique per company !')
+    ]```
