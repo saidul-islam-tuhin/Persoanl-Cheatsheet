@@ -87,3 +87,24 @@ There are two type of constrains <br>
 
         ```
 		
+### QWeb website
+## API
+* t-if
+* t-elif
+* t-else
+* t-esc
+* t-field
+* t-call
+* t-call-assets
+* t-extend
+* t-jquery
+* t-js
+* t-name
+* t-set t-value
+* t-att vs t-attf
+* t-log
+* t-debug
+* t-ignore
+* t-foreach t-as
+* t-raw
+* groups
