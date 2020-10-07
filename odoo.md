@@ -94,13 +94,13 @@ There are two type of constrains <br>
 * t-else
 * t-esc
 * t-field
-* t-call
+* t-call: call an xml template by it. Is's like include django template.
 * t-call-assets
 * t-extend
 * t-jquery
 * t-js
 * t-name
-* t-set t-value
+* t-set t-value: declare a variable using t-set and set the value of this variable by t-value.In t-value we can calculate/call data from db.
 * t-att vs t-attf
 * t-log
 * t-debug
@@ -108,3 +108,18 @@ There are two type of constrains <br>
 * t-foreach t-as
 * t-raw
 * groups
+
+### Oddo Javascript
+Syntax
+```javascript
+odoo.define('moduleName.id_name_for_this_js_module', function (require) {
+	'use strict'
+	// strict ensure that below js code compitable for every js version and device(IE,chrome);
+	//require: require use for call another js module so that we can inherit them and modify them.
+	//example of require: var core = require('web.core');
+  	//			var _t = core._t;
+	$(document).ready(function(){
+	//custom code
+	)};
+)};
+```
