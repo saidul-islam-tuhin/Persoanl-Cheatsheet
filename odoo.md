@@ -123,3 +123,6 @@ odoo.define('moduleName.id_name_for_this_js_module', function (require) {
 	)};
 )};
 ```
+
+### Tricks
+user is logged in or not: t-if="user_id._is_public()" if true then public or logged in user. ANother way, groups="base.group_public"
