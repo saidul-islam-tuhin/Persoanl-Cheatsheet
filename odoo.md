@@ -126,3 +126,10 @@ odoo.define('moduleName.id_name_for_this_js_module', function (require) {
 
 ### Tricks
 user is logged in or not: t-if="user_id._is_public()" if true then public or logged in user. ANother way, groups="base.group_public"
+
+#### Restore large backup zip file: If backup zip filegreater then 1gb 
+Then first we extract the zip...there sould be a *.sql file anf a filestore folder
+First we create a db from /web/database/manager. Note: during db create don't select demo data.
+After db create you can found you db folder in .local/share/Odoo/filestore/ (Where we paste our filestore folder later)
+then we restore db by using this command: psql -U db_user db_name < dump_name.sql
+ 
