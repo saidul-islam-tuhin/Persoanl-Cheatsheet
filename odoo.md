@@ -129,7 +129,16 @@ user is logged in or not: t-if="user_id._is_public()" if true then public or log
 
 #### Restore large backup zip file: If backup zip filegreater then 1gb 
 Then first we extract the zip...there sould be a *.sql file anf a filestore folder
-First we create a db from /web/database/manager. Note: during db create don't select demo data.
-After db create you can found you db folder in .local/share/Odoo/filestore/ (Where we paste our filestore folder later)
-then we restore db by using this command: psql -U db_user db_name < dump_name.sql
+
+First we create a db
+sudu su - postgres
+createdb testdb
+psql
+grant all privileges on database testdb to testuser;
+
+then we restore db by using this command: psql -U db_user db_name < dump.sql
+
+After db create then we create db folder in .local/share/Odoo/filestore/ (Where we paste our filestore folde)
+Finish
+
  
