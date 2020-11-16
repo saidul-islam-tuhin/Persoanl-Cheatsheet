@@ -123,7 +123,36 @@ odoo.define('moduleName.id_name_for_this_js_module', function (require) {
 	)};
 )};
 ```
+var sAnimations = require('website.content.snippets.animation');
+var ajax = require('web.ajax');
+var core = require('web.core');
+var weContext = require("web_editor.context");
+var QWeb = core.qweb;
+var session = require('web.session');
+#### require('web.ajax')
+Use this for api call.
+Example:
+```javascript
+	ajax.rpc('/web/dataset/call_kw/res_partner', {
+                          "model": "res.partner",
+                          "method": "read",
+                          "args": [res_partner_id],
+                          "kwargs": {'fields': ['name', 'zip']}
+                    }).then(function (res) {
+                        zipcode = res[0].zip;
+                        if(zipcode){
+                            sessionStorage.setItem('zipcode', zipcode);
+                            location.reload();
+                        }
+                    });
+```
 
+#### require('web.session')
+For read and write session value
+Example:
+For read: sessionStorage.getItem('zipcode');
+For write: sessionStorage.setItem('state', state);
+		    
 ### Tricks
 user is logged in or not: t-if="user_id._is_public()" if true then public or logged in user. ANother way, groups="base.group_public"
 
