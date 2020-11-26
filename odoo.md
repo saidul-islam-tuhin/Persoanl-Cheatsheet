@@ -130,7 +130,10 @@ var weContext = require("web_editor.context");
 var QWeb = core.qweb;
 var session = require('web.session');
 #### require('web.ajax')
-Use this for api call.
+Use this for api call where return data type json.
+INFO: Odoo has some default path for Dataset when we can read/write/update db by call those path
+Location of those path:odoo/addons/web/controllers/main/
+Tricks: which method had http.route as type="json" we can call them from js using ajax.rpc
 Example:
 ```javascript
 	ajax.rpc('/web/dataset/call_kw/res_partner', {
