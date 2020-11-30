@@ -88,7 +88,8 @@ There are two type of constrains <br>
         ```
 		
 ### QWeb website
-## API
+## QWeb Operation
+Reference Link: https://www.cybrosys.com/blog/advanced-qweb-operations-in-odoo-14, 
 * t-if
 * t-elif
 * t-else
