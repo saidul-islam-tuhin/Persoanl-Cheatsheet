@@ -153,9 +153,10 @@ Example:
 
 #### require('web.session')
 For read and write session value
-Example:
-For read: sessionStorage.getItem('zipcode');
-For write: sessionStorage.setItem('state', state);
+
+Example:<br>
+For read: sessionStorage.getItem('zipcode');<br>
+For write: sessionStorage.setItem('state', state);<br>
 		    
 ### Tricks
 user is logged in or not: t-if="user_id._is_public()" if true then public or logged in user. ANother way, groups="base.group_public"
@@ -173,5 +174,17 @@ then we restore db by using this command: psql -U db_user db_name < dump.sql
 
 After db create then we create db folder in .local/share/Odoo/filestore/ (Where we paste our filestore folde)
 Finish
+
+How to fix database expiration date issue:
+Turn on odoo debug mode<br>
+Settings>Tecnical>System Properties>database.expiration_date then change the date.
+
+If the database already expired then what we will do
+Turn on odoo debug mode<br>
+Go to Settings.Then you can see a shadow block the frontend.we can't do anything
+
+For remove that shado, open chrome console panel and write it "$.unblockUI();"  <br>
+Reference: https://www.snippetbucket.com/odoo-database-has-expired-enterprise/
+
 
  
