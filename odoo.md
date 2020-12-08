@@ -72,6 +72,12 @@ There are two type of constrains <br>
 
         ```
 ### depends(Return a decorator that specifies the field dependencies of a "compute" method (for new-style function fields).)
+This decorator is specifically used for "fields.function" in odoo. For a "field.function", you can calculate the value and store it in a field, where it may possible that the calculation depends on some other field(s) of same table or some other table, in that case you can use '@api.depends' to keep a 'watch' on a field of some table.<br>
+So, this will trigger the call to the decorated function if any of the fields in the decorator is 'altered by ORM or changed in the form'.<br>
+Let's say there is a table 'A' with fields "x,y & z" and table 'B' with fields "p", where 'p' is a field.function depending upon the field 'x' from table 'A', so if any of the change is made in the field 'x', it will trigger the decorated function for calculating the field 'p' in table 'B'.<br>
+
+Make sure table "A" and "B" are related in some way.
+
 * @api.depends():<br>
     * Example:<br>
         ```python 
