@@ -27,6 +27,8 @@ type of api:
 * @api.returns()
 * @api.model
 * @api.model_create_multi
+* @api.multi
+* @api.one
 
 ### constrains(restriction\check validity data before save data)
 There are two type of constrains <br>
@@ -61,7 +63,12 @@ There are two type of constrains <br>
         When from_date and to_date value change first trigger _check_amount then _check_amount_to<br>
 
 ### onchange(when field value change)
+This decorator will trigger the call to the decorated function if any of the fields specified in the decorator is changed in the form. Here scope is limited to the same screen / model.<br>
+Let's say on form we have fields "DOB" and "Age", so we can have @api.onchange decorator for "DOB", where as soon as you change the value of "DOB", you can calculate the "age" field.<br>
+
+You may field similarities in @api.depends and @api.onchange, but the some differences are that scope of onchange is limited to the same screen / model while @api.depends works other related screen / model also.
 **constrains vs onchange**: constrains trigger when save button click but onchange trigger when field value change.
+
 * @api.onchange():<br>
     * Example:<br>
         ```python 
@@ -166,6 +173,15 @@ For write: sessionStorage.setItem('state', state);<br>
 		    
 ### Tricks
 user is logged in or not: t-if="user_id._is_public()" if true then public or logged in user. ANother way, groups="base.group_public"
+
+#### When use store=True?
+The store keyword used to enhance the performance; since the functional field will be computed each time it'll be visible to the user.<br>
+**Assume, fieldA whose value come from a caculated function. So, if this field only show in form view, we can use store=False because in form view we are working only one record<br>
+If we show fieldA in Tree/List view there should have multiple record, so every time the compute function called for generate the record. So if we use store=True then the value serve form db which was time saving**
+
+without the store keyword [store=False], the functional field will not be stored in the database [e.g you can just access it by a browse record].<br>
+If you use store=True [the default is False]; your functional field will be stored in the DB and will be calculated for just one time.
+
 
 #### Restore large backup zip file: If backup zip filegreater then 1gb 
 Then first we extract the zip...there sould be a *.sql file anf a filestore folder
