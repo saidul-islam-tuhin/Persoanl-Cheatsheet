@@ -123,6 +123,61 @@ Reference Link: https://www.cybrosys.com/blog/advanced-qweb-operations-in-odoo-1
 * t-raw
 * groups
 
+### Inheritance view in xml
+#### Add field in form view
+```javascript
+<!-- Add field in form view -->
+<record model="ir.ui.view" id="view_sale_order_inherited">
+    <field name="name">bis.inherited.sale.order.form</field>
+    <field name="model">sale.order</field>
+    <field name="inherit_id" ref="sale.view_order_form"/>
+    <field name="arch" type="xml">
+	<xpath expr="//field[@name='partner_id']" position="before">
+	    <field name='customer_verification_status' widget="selection"/>
+	</xpath>
+    </field>
+</record>
+```
+#### Add field in tree/list view
+```javascript
+<!-- Add field in tree/list view -->
+<record id="bis_sale_view_order_tree" model="ir.ui.view">
+    <field name="name">bis.sale.order.tree</field>
+    <field name="model">sale.order</field>
+    <field name="priority">100</field>
+    <field name="inherit_id" ref="sale.view_quotation_tree_with_onboarding"/>
+    <field name="arch" type="xml">
+	<xpath expr="//tree[1]/field[@name='partner_id']" position="before">
+	    <button icon="fa-check-circle text-success"  title="Verified Customer" attrs="{'invisible': ['|',('customer_verification_status','=','non-verified'),('customer_verification_status','=',False)]}" />
+	    <field name='customer_verification_status' invisible="1"/>
+	</xpath>
+    </field>
+</record>
+```
+#### Add new filter in search view
+```javascript
+<record id="bis_sale_order_view_search_inherit_quotation" model="ir.ui.view">
+    <field name="name">bis.sale.order.search.inherit.quotation</field>
+    <field name="model">sale.order</field>
+    <field name="mode">extension</field>
+    <field name="inherit_id" ref="sale.sale_order_view_search_inherit_quotation"/>
+    <field name="arch" type="xml">
+	<filter name="my_quotation" position="after">
+	    <filter string="Verified Qutation" 
+		    domain="[('customer_verification_status', '=', 'verified')]"
+		    name="verified_customer"
+		    help="Filter qutation by verified customer"
+	    />
+	    <filter string="Non Verified Qutation" 
+		    domain="['|',('customer_verification_status', '=', 'non-verified'),('customer_verification_status', '=', False)]"
+		    name="non_verified_customer"
+		    help="Filter qutation by Non verified customer"
+	    />
+	</filter>
+    </field>
+</record>
+```
+
 ### Oddo Javascript
 Syntax
 ```javascript
