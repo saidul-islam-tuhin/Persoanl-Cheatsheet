@@ -164,6 +164,8 @@ Reference Link: https://www.cybrosys.com/blog/advanced-qweb-operations-in-odoo-1
 </odoo>
 ```
 #### Add new filter in search view
+**Reference** :
+* https://www.odoo.yenthevg.com/adding-filters-existing-search-views/
 ```javascript
 <odoo>
     <data>
