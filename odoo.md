@@ -192,7 +192,10 @@ Reference Link: https://www.cybrosys.com/blog/advanced-qweb-operations-in-odoo-1
     </data>
 </odoo>
 ```
-
+### Using domain what is displayed/filtering
+* <button icon="fa-check-circle text-success"  title="Verified Customer" 
+		    attrs="{'invisible': ['|',('customer_verification_status','=','non-verified'),('customer_verification_status','=',False)]}" /><br>
+Explain: When all condition True, button will be hide/invisible/readonly.
 ### Oddo Javascript
 Syntax
 ```javascript
