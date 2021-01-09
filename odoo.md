@@ -259,11 +259,11 @@ If you use store=True [the default is False]; your functional field will be stor
 #### Restore large backup zip file: If backup zip filegreater then 1gb 
 Then first we extract the zip...there sould be a *.sql file anf a filestore folder
 
-First we create a db
-sudu su - postgres
-createdb testdb
-psql
-grant all privileges on database testdb to testuser;
+**First we create a db**<br/>
+sudu su - postgres<br/>
+createdb testdb<br/>
+psql<br/>
+grant all privileges on database testdb to testuser;<br/>
 
 then we restore db by using this command: psql -U db_user db_name < dump.sql
 
