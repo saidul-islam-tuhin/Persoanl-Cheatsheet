@@ -264,8 +264,9 @@ sudu su - postgres<br/>
 createdb testdb<br/>
 psql<br/>
 grant all privileges on database testdb to testuser;<br/>
-
-then we restore db by using this command: psql -U db_user db_name < dump.sql
+exit;<br/>
+exit<br>
+then we restore db by using this command(main user): psql -U db_user db_name < dump.sql
 
 After db create then we create db folder in .local/share/Odoo/filestore/ (Where we paste our filestore folde)
 Finish
