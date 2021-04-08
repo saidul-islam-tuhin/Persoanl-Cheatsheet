@@ -99,7 +99,10 @@ Make sure table "A" and "B" are related in some way.
 			record.pname = record.partner_id.name
 
         ```
-		
+### Button
+## Type
+	1. type='object':
+	2. type='action':
 ### QWeb website
 ## QWeb Operation
 Reference Link: https://www.cybrosys.com/blog/advanced-qweb-operations-in-odoo-14, 
