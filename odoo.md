@@ -195,6 +195,32 @@ Reference Link: https://www.cybrosys.com/blog/advanced-qweb-operations-in-odoo-1
     </data>
 </odoo>
 ```
+### t-name & t-extend:
+When we need a template which will be call from js and show to front end then we will use t-name for that.
+Syntax:
+XML file:
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+	<t t-name="id1">
+		<!-- 	HTML/XML code -->
+	</t>
+	<t t-name="id2">
+		<!-- 	HTML/XML code -->
+	</t>
+	.....
+</template>
+```
+**NOTE**: id="template" fixed we always use id="template" for t-name
+How to modify/extend t-name field?
+By using t-extend.
+```
+<t t-extend="id1" t-name="optional_name">
+        <t t-jquery="selector" t-operation="after">
+		<!--        xml code     -->
+        </t>
+    </t>
+```
 ### Using domain what is displayed/filtering
 * <button icon="fa-check-circle text-success"  title="Verified Customer" 
 		    attrs="{'invisible': ['|',('customer_verification_status','=','non-verified'),('customer_verification_status','=',False)]}" /><br>
