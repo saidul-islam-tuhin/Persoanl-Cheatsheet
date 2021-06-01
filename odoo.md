@@ -100,9 +100,19 @@ Make sure table "A" and "B" are related in some way.
 
         ```
 ### Menu
-tag: menuitem
-attr: id*, name, parent, action, sequence, active, web_icon, groups
-	```
+tag: menuitem<br>
+attr: id*, name, parent, action, sequence, active, web_icon, groups<br>
+* id: unique id off meuitem
+* name: Name/String of menuitem.
+* **parent**: If the menuitem is a submenu then the value will be parent/root menuitem id. If no parent set then the menuitem will appear as top/root menu.
+* action: id of action i.e. what happend when user click the menuitem.
+* sequence: position value i.e. which position the menuitem will appear.
+* active:
+* web_icon: In odoo enterprice version, if the menuitem is root menu then it will show in homepage with icon image.
+	TODO: screenshot
+* groups: 
+
+```xml
 	<!-- Top menu item -->
         <menuitem id="sale_menu_root"
             name="Sales"
@@ -120,7 +130,7 @@ attr: id*, name, parent, action, sequence, active, web_icon, groups
                 parent="sale_order_menu"
                 sequence="1" groups="sales_team.group_sale_salesman"/>
 	   
-	```
+```
 ### Button
 ## Type
 	1. type='object':
