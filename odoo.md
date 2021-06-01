@@ -99,6 +99,28 @@ Make sure table "A" and "B" are related in some way.
 			record.pname = record.partner_id.name
 
         ```
+### Menu
+tag: menuitem
+attr: id*, name, parent, action, sequence, active, web_icon, groups
+	```
+	<!-- Top menu item -->
+        <menuitem id="sale_menu_root"
+            name="Sales"
+            web_icon="sale,static/description/icon.png"
+            active="False"
+            sequence="7"/>
+	<!-- Submenu of Orders, it will show in navbar	  -->
+	  <menuitem id="sale_order_menu"
+            name="Orders"
+            parent="sale_menu_root"
+            sequence="2"/>
+	<!-- 	Submenu of ORDERS, it will show as dropdown  -->
+	 <menuitem id="menu_sale_quotations"
+                action="action_quotations_with_onboarding"
+                parent="sale_order_menu"
+                sequence="1" groups="sales_team.group_sale_salesman"/>
+	   
+	```
 ### Button
 ## Type
 	1. type='object':
