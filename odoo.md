@@ -131,6 +131,8 @@ attr: id*, name, parent, action, sequence, active, web_icon, groups<br>
                 sequence="1" groups="sales_team.group_sale_salesman"/>
 	   
 ```
+### Action
+view_ref = which view want to open up when menu button click
 ### Button
 ## Type
 	1. type='object':
