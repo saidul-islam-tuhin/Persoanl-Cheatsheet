@@ -133,6 +133,42 @@ attr: id*, name, parent, action, sequence, active, web_icon, groups<br>
 ```
 ### Action
 view_ref = which view want to open up when menu button click
+### Tree
+Tree view is a list view.<br>
+tag: tree<br>
+attr: string, decoration-info,decoration-bf, decoration-muted, js_class, editable<br>
+Syntax:
+```xml
+	<!--  Tree view of accout.cash.rounding model	 -->
+	<record id="rounding_tree_view" model="ir.ui.view">
+            <field name="name">account.cash.rounding.tree</field>
+            <field name="model">account.cash.rounding</field>
+            <field name="arch" type="xml">
+                <tree string="Rounding Tree">
+                    <field name="name"/>
+                    <field name="rounding"/>
+                    <field name="rounding_method"/>
+                </tree>
+            </field>
+        </record>
+```
+### Form TODO
+tag: form<br>
+header, sheet, group, notebook,field, 
+Syntax:
+```xml
+	<record id="view_order_form" model="ir.ui.view">
+            <field name="name">sale.order.form</field>
+            <field name="model">sale.order</field>
+            <field name="arch" type="xml">
+	    <form string="Sales Order" class="o_sale_order">
+		    <header>
+			    ......................
+		    </header>
+		    <sheet>
+		    </sheet>
+```
+
 ### Button
 ## Type
 	1. type='object':
