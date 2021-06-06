@@ -12,6 +12,10 @@ sudo apt install ./wkhtmltox_0.12.1.3-1~bionic_amd64.deb
 
 git clone https://www.github.com/odoo/odoo --depth 1 --branch 13.0 /opt/odoo13/odoo
 
+python3 -m venv odoo-venv
+source odoo-venv/bin/activate
+pip3 install wheel
+pip3 install -r odoo/requirements.txt
 WIP
 
 # Odoo debugin in vs code
