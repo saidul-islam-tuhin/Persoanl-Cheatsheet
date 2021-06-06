@@ -342,7 +342,12 @@ For read and write session value
 Example:<br>
 For read: sessionStorage.getItem('zipcode');<br>
 For write: sessionStorage.setItem('state', state);<br>
-		    
+
+### Website 
+## Snippet & Snippet options
+Reference:
+* https://www.odoo.com/documentation/14.0/developer/howtos/themes.html#create-snippets
+* https://soft29.ru/blog/entry/defining-a-snippet-option-in
 ### Tricks
 user is logged in or not: t-if="user_id._is_public()" if true then public or logged in user. ANother way, groups="base.group_public"
 
