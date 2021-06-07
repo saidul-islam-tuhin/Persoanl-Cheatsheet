@@ -16,6 +16,7 @@ python3 -m venv odoo-venv
 source odoo-venv/bin/activate
 pip3 install wheel
 pip3 install -r odoo/requirements.txt
+pip3 install ptvsd
 WIP
 
 # Odoo debugin in vs code
