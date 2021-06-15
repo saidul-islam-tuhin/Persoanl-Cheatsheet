@@ -104,6 +104,64 @@ Make sure table "A" and "B" are related in some way.
 			record.pname = record.partner_id.name
 
         ```
+### MODEL Inheritance
+There are three type of model inheritance:<br>
+	* Extend (Inheritance) same model
+	* Traditional (Classical) Inheritance
+	* Delegation Inheritance
+**TODO**
+
+Inheritance Types1
+Extend (Inheritance) same model
+Here we will use the only _inherit, we will not use the _name model attribute. The child model replaces the existing one. This inheritance is used when we want to add new fields or methods to the existing model.
+```
+class ModelA
+_name = model_a
++fieldA
+
+# No extra table will create
+class ModelB:
+_inherit = ModelA
++fieldB
+```
+In DB: Table model_a: fieldA,fieldB
+
+Inheritance Types2
+Traditional (Classical) Inheritance
+In this inheritance, we use both _name and _inherit model attributes together. The new models get all methods, fields from its base.
+```python
+class ModelA:
+_name = model_a
++fieldA
+
+# No extra table will create
+class ModelB:
+_name = model_b
+_inherit = ModelA
++fieldB
+```
+In DB: Table model_a: fieldA
+	Table model_b: fieldB, fieldA
+
+Inheritance Types3
+Delegation Inheritance
+In delegation inheritance, we use the _inherits model attribute. This is used if you want to use another model in your current model.
+NOTE: When ModelB data create it also create data on ModelA.
+Example: when res.user create it also create res.partner for it.
+```python
+class ModelA
+_name = model_a
++fieldA
+
+# No extra table will create
+class ModelB:
+_name = model_b
+_inherits = {"ModelA":"model_a_id"}
++fieldB
+```
+In DB: Table model_a: fieldA
+	Table model_b: fieldB, model_a_id
+
 ### Menu
 tag: menuitem<br>
 attr: id*, name, parent, action, sequence, active, web_icon, groups<br>
