@@ -130,23 +130,56 @@ Inheritance Types2
 Traditional (Classical) Inheritance
 In this inheritance, we use both _name and _inherit model attributes together. The new models get all methods, fields from its base.
 ```python
-class ModelA:
-_name = model_a
-+fieldA
+class Screen(models.Model):
+    _name = 'delegation.screen'
+    _description = 'Screen'
 
-# No extra table will create
-class ModelB:
-_name = model_b
-_inherit = ModelA
-+fieldB
+    size = fields.Float(string='Screen Size in inches')
+
+class Keyboard(models.Model):
+    _name = 'delegation.keyboard'
+    _description = 'Keyboard'
+
+    layout = fields.Char(string='Layout')
+
+class Laptop(models.Model):
+    _name = 'delegation.laptop'
+    _description = 'Laptop'
+
+    _inherits = {
+        'delegation.screen': 'screen_id',
+        'delegation.keyboard': 'keyboard_id',
+    }
+
+    name = fields.Char(string='Name')
+    maker = fields.Char(string='Maker')
+
+    # a Laptop has a screen
+    screen_id = fields.Many2one('delegation.screen', required=True, ondelete="cascade")
+    # a Laptop has a keyboard
+    keyboard_id = fields.Many2one('delegation.keyboard', required=True, ondelete="cascade")
+
+>>>
+record = env['delegation.laptop'].create({
+    'screen_id': env['delegation.screen'].create({'size': 13.0}).id,
+    'keyboard_id': env['delegation.keyboard'].create({'layout': 'QWERTY'}).id,
+})
+record.size	# -> 13.0
+record.layout	# -> 'QWERTY'
+record.write({'size': 14.0})
+>>>
+
 ```
 In DB: Table model_a: fieldA
 	Table model_b: fieldB, fieldA
 
 Inheritance Types3
 Delegation Inheritance
-In delegation inheritance, we use the _inherits model attribute. This is used if you want to use another model in your current model.
-NOTE: When ModelB data create it also create data on ModelA.
+In delegation inheritance, we use the **_inherits** model attribute. This is used if you want to use another model in your current model.
+NOTE: <br>
+	* When ModelB data create it also create data on ModelA.
+	* The delegation inheritance inherits only fields and methods are not inherited i.e all the field of ModelA can access by ModelB object.
+	* **It can be useful, when we need to embed a model in our current model without affecting the existing views, but we want to have the fields of inherited objects.**
 Example: when res.user create it also create res.partner for it.
 ```python
 class ModelA
