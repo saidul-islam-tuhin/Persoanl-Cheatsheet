@@ -458,7 +458,8 @@ If you use store=True [the default is False]; your functional field will be stor
 
 #### Restore large backup zip file: If backup zip filegreater then 1gb 
 Then first we extract the zip...there sould be a *.sql file anf a filestore folder
-
+#### CHange admin password from backend
+https://www.odoo.com/es_ES/forum/ayuda-1/how-to-reset-the-odoo-admin-user-password-a-summary-for-different-odoo-versions-131992
 **First we create a db**<br/>
 sudu su - postgres<br/>
 createdb testdb<br/>
