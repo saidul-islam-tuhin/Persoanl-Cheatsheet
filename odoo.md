@@ -194,7 +194,58 @@ _inherits = {"ModelA":"model_a_id"}
 ```
 In DB: Table model_a: fieldA
 	Table model_b: fieldB, model_a_id
+### WIZARD
+**model** : TransientModel <br>
 
+wizard/student_fees_update_wizard.py<br>
+```python
+from odoo import api, models, fields
+
+
+class StudentFeesUpdateWizard(models.TransientModel):
+    _name = "student.feees.update.wizard"
+
+    total_fees = fields.Float(string="Fees")
+
+
+    def update_student_fees(self):
+        # print("Yeah successfully click on update_student_fees method........")
+	print(self._context) # output :> dict object
+        self.env['school.student'].browse(self._context.get("active_ids")).update({'total_fees': self.total_fees})
+        return True
+```
+security/ir.model.access.csv <br>
+```
+............
+access_student_fees_update,student_fees_update,model_student_fees_update_wizard,base.group_user,1,1,1,1
+............
+```
+wizard/student_fees_update_wizard_view.xml<br>
+```xml
+<odoo>
+    <data>
+
+        <record id="student_fees_update_form_view_wiz" model="ir.ui.view">
+            <field name="name">student.fees.update.form.view.wiz</field>
+            <field name="model">student.feees.update.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="total_fees" />
+                        </group>
+                    </group>
+
+                    <footer>
+                        <button string="Update Fees" name="update_student_fees" type="object"  />
+                        <button string="Cancel" special="cancel" class="btn btn-secondary" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>
+```
 ### Menu
 tag: menuitem<br>
 attr: id*, name, parent, action, sequence, active, web_icon, groups<br>
