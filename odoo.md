@@ -299,6 +299,18 @@ attr: id*, name, parent, action, sequence, active, web_icon, groups<br>
                 sequence="1" groups="sales_team.group_sale_salesman"/>
 	   
 ```
+### Speical Command
+|  Command Name     | Short Description           |
+| ------------- |:-------------:|
+| (0,0, {})      | Create New Record |
+| (1, id, {})      | Edit Existing Record      |
+| (2, id, False) | Remove record from database      |
+| (3, id, False) | Remove record from Relational field but no permenent      |
+| (4, id, False) | Add exising record in Relational field      |
+| (5, False, False) | Remove all Relational Record field but not permenet      |
+| (6, False, [ ids ]) | Replace existing M2M field with new existing records   |
+
+
 ### Action
 view_ref = which view want to open up when menu button click
 ### Tree
