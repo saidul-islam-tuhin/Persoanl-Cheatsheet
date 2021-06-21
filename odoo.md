@@ -196,7 +196,13 @@ In DB: Table model_a: fieldA
 	Table model_b: fieldB, model_a_id
 ### WIZARD
 **model** : TransientModel <br>
+#### How to open WIZARD
+* Using Button Click(Object Type)
+* Using Button Click(Action Type)
+* Using Menu Click(Object Type)
+* Using Action Menu
 
+##### Using Button Click(Object Type)
 wizard/student_fees_update_wizard.py<br>
 ```python
 from odoo import api, models, fields
@@ -246,12 +252,21 @@ wizard/student_fees_update_wizard_view.xml<br>
     </data>
 </odoo>
 ```
-#### How to open WIZARD
-* Using Button Click(Object Type)
-* Using Button Click(Action Type)
-* Using Menu Click(Object Type)
-* Using Action Menu
-
+Using Button Click(Action Type)
+views/views.xml<br>
+```xml
+<button name="school_student.student_fees_update_action" string="Wizard open using action" type="action" />
+```
+wizard/student_fees_update_wizard_view.xml<br>
+```xml
+<!--  Action-->
+        <record id="student_fees_update_action" model="ir.actions.act_window">
+            <field name="name">Student Fees Update</field>
+            <field name="res_model">student.feees.update.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+```
 **TODO**<br>
 Using Button Click(Action Type)
 button
