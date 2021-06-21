@@ -246,6 +246,27 @@ wizard/student_fees_update_wizard_view.xml<br>
     </data>
 </odoo>
 ```
+#### How to open WIZARD
+* Using Button Click(Object Type)
+* Using Button Click(Action Type)
+* Using Menu Click(Object Type)
+* Using Action Menu
+
+**TODO**<br>
+Using Button Click(Action Type)
+button
+xml action
+
+Using Menu Click(Object Type) contextual menu
+button
+xml action
+binding_model_id
+binding_view_types
+
+Using Action Menu
+
+menuitem> action
+
 ### Menu
 tag: menuitem<br>
 attr: id*, name, parent, action, sequence, active, web_icon, groups<br>
