@@ -325,7 +325,35 @@ attr: id*, name, parent, action, sequence, active, web_icon, groups<br>
 | (5, False, False) | Remove all Relational Record field but not permenet      |
 | (6, False, [ ids ]) | Replace existing M2M field with new existing records   |
 
-
+Example of **(0,0,{}}**:
+```python
+# It will create two new attribute line record of product template
+product_template = self.env['product.template'].create({
+            'name': 'Sofa',
+            'attribute_line_ids': [
+                (0, 0, {
+                    'attribute_id': att_color.id,
+                    'value_ids': [(6, 0, [att_color_red.id, att_color_blue.id])] # ignore it
+                }),
+                (0, 0, {
+                    'attribute_id': att_size.id,
+                    'value_ids': [(6, 0, [att_size_big.id, att_size_medium.id])] # ignore it
+                })
+            ]
+        })
+```
+Example of **(1, id, {})**:
+```python
+# It will Write/Update record of given id value. Like in product template we update attribute line of 12.
+product_template = product_template_obj.write({
+            'attribute_line_ids': [
+                (0, 12, {
+                    'attribute_id': another_att_color_id.id,
+                    'value_ids': [(6, 0, [att_color_red.id, att_color_blue.id])] # ignore it
+                }),
+            ]
+        })
+```
 ### Action
 view_ref = which view want to open up when menu button click
 ### Tree
