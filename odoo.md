@@ -319,8 +319,8 @@ attr: id*, name, parent, action, sequence, active, web_icon, groups<br>
 | ------------- |:-------------:|
 | (0,0, {})      | Create New Record |
 | (1, id, {})      | Edit Existing Record      |
-| (2, id, False) | Remove record from database      |
-| (3, id, False) | Remove record from Relational field but no permenent      |
+| (2, id, False) | Remove record from database  Completly    |
+| (3, id, False) | Remove record from Relational field but no permenent i.e unlink the relation     |
 | (4, id, False) | Add exising record in Relational field      |
 | (5, False, False) | Remove all Relational Record field but not permenet      |
 | (6, False, [ ids ]) | Replace existing M2M field with new existing records   |
