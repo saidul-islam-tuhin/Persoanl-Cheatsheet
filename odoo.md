@@ -22,9 +22,28 @@ WIP
 # Odoo debugin in vs code
 
 python -m ptvsd --host localhost --port 5678 ./odoo/odoo-bin -d odoo13db --xmlrpc-port=8069 -c ./odoo-extra-addons/odoo-dev.conf  
+# ORM
+### Common ORM Method
+|   Name     | Short Description           |
+| ------------- |:-------------:|
+| create      | Create New Record |
+| write      | Update Existing Record      |
+| copy | Create new record from existing record    |
+| unlink | Delete record     |
+| default_get | Set default value while create new record      |
+| name_create | Create record with name field     |
 
+### Search/Read related ORM Method
+|   Name     | Short Description           |
+| ------------- |:-------------:|
+| browse      | Create New Record |
+| search      | Update Existing Record      |
+| search_count | Create new record from existing record    |
+| name_search | Delete record     |
+| read | Set default value while create new record      |
+| read_group | Create record with name field     |
 
-# API
+## API
 type of api:
 * @api.constrains()
 * @api.onchange()
