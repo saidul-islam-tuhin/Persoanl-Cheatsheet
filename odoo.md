@@ -601,6 +601,10 @@ If we show fieldA in Tree/List view there should have multiple record, so every 
 without the store keyword [store=False], the functional field will not be stored in the database [e.g you can just access it by a browse record].<br>
 If you use store=True [the default is False]; your functional field will be stored in the DB and will be calculated for just one time.
 
+#### Create db from commandline
+-d db_name --stop-after-init <br>
+By default db create without demo data.If we need to create db with demo data then in dev.conf file paste below line<br>
+without_demo = False
 
 #### Restore large backup zip file: If backup zip filegreater then 1gb 
 Then first we extract the zip...there sould be a *.sql file anf a filestore folder
