@@ -23,6 +23,8 @@ WIP
 
 python -m ptvsd --host localhost --port 5678 ./odoo/odoo-bin -d odoo13db --xmlrpc-port=8069 -c ./odoo-extra-addons/odoo-dev.conf  
 # ORM
+TODO: _name,_dicription,_inherit,_inherits,_custom,_table,_sequence,_sql_constraints, _rec_name, _order, _parent_name, _parent_store, _date_name, _fold_name <br>
+TODO(method): user_has_groups, _fields_view_get, _compute_display_name, name_get
 ### Common ORM Method
 |   Name     | Short Description           |
 | ------------- |:-------------:|
