@@ -378,7 +378,15 @@ product_template = product_template_obj.write({
 ### Action
 view_ref = which view want to open up when menu button click
 ### Tree
-Tree view is a list view.<br>
+* Tree view is a list view.<br>
+* User can create records through list view
+* Aggregation function can use list view. Example: total sum/avarage of numeric column
+* Add recordset to color/style
+* user can priotize record by drag/drop feature
+* User can invisible/visible speicific column
+* Control some action(create,delete,edit,import,duplicate,export_xlsx)
+
+
 tag: tree<br>
 attr: string, decoration-info,decoration-bf, decoration-muted, js_class, editable<br>
 Syntax:
