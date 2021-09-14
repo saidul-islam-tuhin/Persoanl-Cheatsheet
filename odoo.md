@@ -543,6 +543,26 @@ By using t-extend.
         </t>
     </t>
 ```
+### Built-in method
+## Sale Order
+* action_draft: marked quation as draft. state=draft/Qutation
+* action_confirm: confirm draft sale order. state=sale/Sale Order
+* action_quotation_sent: Sent qutation pdf in email to user. state=sent/Qutatoin Sent
+* action_cancel: canceled the sale order. state=cancel
+* action_done
+* action_unlock
+* action_view_invoice
+* _create_invoices
+* action_quotation_send: Opens a wizard to compose an email for sending the qutation to user, with relevant mail template loaded by default
+* has_to_be_signed
+* has_to_be_paid
+* _create_payment_transaction
+* preview_sale_order
+* payment_action_capture
+* payment_action_void
+* get_portal_last_transaction:
+* _get_share_url
+
 ### Using domain what is displayed/filtering
 * <button icon="fa-check-circle text-success"  title="Verified Customer" 
 		    attrs="{'invisible': ['|',('customer_verification_status','=','non-verified'),('customer_verification_status','=',False)]}" /><br>
