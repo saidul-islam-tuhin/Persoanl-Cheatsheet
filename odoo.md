@@ -404,6 +404,18 @@ Syntax:
             </field>
         </record>
 ```
+Tips: <br>
+Sum record end of tree: 
+![alt text](https://github.com/saidul-islam-tuhin/Persoanl-Cheatsheet/blob/master/screenshot-superasia-sandbox-3309086.dev.odoo.com-2021.11.09-15_06_02.png)
+Add sum atrribute in field.<br>
+Syntax: sum="FieldName_sum"<br>
+Example: 
+```xml
+<tree>
+<field name="quantity" sum="quantity_sum"/>
+</tree>
+```
+
 ### Form TODO
 tag: form<br>
 header, sheet, group, notebook,field, 
