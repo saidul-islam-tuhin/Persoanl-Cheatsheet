@@ -415,7 +415,19 @@ Example:
 <field name="quantity" sum="quantity_sum"/>
 </tree>
 ```
-
+Tree view of OneToMany field
+Structure:
+```xml
+<field name="manytoone_field" context="{}">
+	<!-- form tag needed if we want	to popup form/detail page when user click any record of tree -->
+	<form string="PopUp Form">
+		......
+	</form>
+	<tree string="many to One tree" editable=False>
+		......
+	</tree>
+</field>
+```
 ### Form TODO
 tag: form<br>
 header, sheet, group, notebook,field, 
