@@ -59,3 +59,38 @@ this.$input.autocomplete({
 
         });
  ```
+Include/Extend existing class of js
+
+```js
+import { patch } from 'web.utils';
+import { Activity } from '@mail/components/activity/activity';
+// REFERENCE: odoo/addons/calendar/static/src/components/activity/activity.js
+```
+Patching async function
+```js
+patch(object, "async _super patch", {
+  async myAsyncFn() {
+    const _super = this._super.bind(this);
+    await Promise.resolve();
+    await _super(...arguments);
+    // await this._super(...arguments); // this._super is undefined.
+  },
+});
+```
+
+Extend owl component
+There are two types of inherit mode
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-inherit="mail.Activity" t-inherit-mode="extension">
+        <xpath expr="//button[hasclass('o_Activity_editButton')]" position="attributes">
+            <attribute name="t-if">!activity.calendar_event_id</attribute>
+        </xpath>
+    </t>
+
+</templates>
+// REFERENCE: odoo/addons/calendar/static/src/components/activity/activity.xml
+```
+
