@@ -50,6 +50,7 @@ type of api:
 * @api.constrains()
 * @api.onchange()
 * @api.depends()
+* @api.depends_context() # TODO
 * @api.returns()
 * @api.model
 * @api.model_create_multi
