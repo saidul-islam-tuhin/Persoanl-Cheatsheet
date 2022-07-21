@@ -13,11 +13,16 @@ sudo apt install ./wkhtmltox_0.12.1.3-1~bionic_amd64.deb
 git clone https://www.github.com/odoo/odoo --depth 1 --branch 13.0 /opt/odoo13/odoo
 
 python3 -m venv odoo-venv
+
 source odoo-venv/bin/activate
+
 pip3 install wheel
+
 pip3 install -r odoo/requirements.txt
+
 pip3 install ptvsd
-WIP
+
+
 
 # Odoo debugin in vs code
 
@@ -674,7 +679,26 @@ exit;<br/>
 exit<br>
 then we restore db by using this command(main user): psql -U db_user db_name < dump.sql
 
-After db create then we create db folder in .local/share/Odoo/filestore/ (Where we paste our filestore folde)
+After db create then we create db folder in .local/share/Odoo/filestore/ (Where we paste our filestore folder)
+
+**Before runnin server below command need to execute**
+
+update ir_cron set active=False;
+
+delete from ir_mail_server;
+
+delete from fetchmail_server;
+
+update delivery_carrier set active = False;
+
+select * from ir_config_parameter where key ilike '%code%';
+
+delete from ir_config_parameter where id=49;
+
+update ir_config_parameter set value='http://localhost:8090' where id=4;
+
+update res_users set login='admin',password='1' where id=2;
+
 Finish
 
 How to fix database expiration date issue:
