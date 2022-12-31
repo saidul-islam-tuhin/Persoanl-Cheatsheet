@@ -712,7 +712,17 @@ Go to Settings.Then you can see a shadow block the frontend.we can't do anything
 For remove that shado, open chrome console panel and write it "$.unblockUI();"  <br>
 Reference: https://www.snippetbucket.com/odoo-database-has-expired-enterprise/
 
-# Set Domain of Many2One Field OnChange of Another Field
+# TIPS: Set Domain of Many2One Field OnChange of Another Field
+
+1. Using domain in field
+```python
+country_id = fields.Many2one('res.country', string='Country', required=True)
+state_id = fields.Many2one('res.country.state', string="State", domain="[('country_id', '=', country_id)]")
+```
+
+OR
+
+2. Using Onchange
 ```python
 campus_id = fields.Many2one('model.campus', string="Campus Name")
 department_id = fields.Many2one('model.department', string="Department Name")
@@ -723,4 +733,31 @@ def _campus_onchange(self):
     res['domain']={'department_id':[('campus_id', '=', self.campus_id.id)]}
     return res
 ```
+
+OR
+
+3. Using context and _name_search
+
+```python
+country_id = fields.Many2one('res.country', string='Country', required=True)
+state_id = fields.Many2one('res.country.state', string="State"")
+```
+```xml
+<field name="country_id"/>
+<field name="state_id" context="{'country_id': country_id}"/> 
+```
+```python
+class CountryState(models.Model):
+    _inherit = 'res.country.state'
+    
+    @api.model
+    def _name_search(self, name, args=None, operator='ilike', limit=100, name_get_uid=None):
+        args = args or []
+        if self.env.context.get('country_id'):
+            args = expression.AND([args, [('country_id', '=', self.env.context.get('country_id'))]])
+	
+	........
+	........
+```
+
  
