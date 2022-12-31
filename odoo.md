@@ -712,5 +712,15 @@ Go to Settings.Then you can see a shadow block the frontend.we can't do anything
 For remove that shado, open chrome console panel and write it "$.unblockUI();"  <br>
 Reference: https://www.snippetbucket.com/odoo-database-has-expired-enterprise/
 
+# Set Domain of Many2One Field OnChange of Another Field
+```python
+campus_id = fields.Many2one('model.campus', string="Campus Name")
+department_id = fields.Many2one('model.department', string="Department Name")
 
+@api.onchange('campus_id')
+def _campus_onchange(self):
+    res = {}
+    res['domain']={'department_id':[('campus_id', '=', self.campus_id.id)]}
+    return res
+```
  
